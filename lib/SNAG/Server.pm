@@ -169,24 +169,24 @@ sub new
       }  
       else
       {
-        $kernel->call('logger' => 'log' => "SNAG::Server Error:  got a disconnect from a server that wasn't connected, ip=$ip, host=$heap->{hostname}");
+        $kernel->call('logger' => 'log' => "SNAG::Server Error: got a disconnect from a server that wasn't connected, ip=$ip, host=$heap->{hostname}");
       }
 
       
       $server_data->{disconn}++;
-      $kernel->call('logger' => 'log' => "ClientDisconnected: Closed connection from $ip ($heap->{hostname})");
+      $kernel->call('logger' => 'log' => "SNAG::Server ClientDisconnected: Closed connection from $ip ($heap->{hostname})");
     },
   
     Error => sub
     {
       my ($kernel, $heap, $syscall_name, $error_number, $error_string) = @_[KERNEL, HEAP, ARG0, ARG1, ARG2];
-      $kernel->call('logger' => 'log' => "SNAG::Server Error:  $syscall_name:$error_number:$error_string");
+      $kernel->call('logger' => 'log' => "SNAG::Server Error: $syscall_name:$error_number:$error_string");
     },
 
     ClientError => sub
     {
       my ($kernel, $heap, $syscall_name, $error_number, $error_string) = @_[KERNEL, HEAP, ARG0, ARG1, ARG2];
-      $kernel->call('logger' => 'log' => "SNAG::Server ClientError:  $syscall_name:$error_number:$error_string");
+      $kernel->call('logger' => 'log' => "SNAG::Server ClientError: $syscall_name:$error_number:$error_string");
     },
 
 
@@ -219,7 +219,7 @@ sub new
         my ($kernel, $heap) = @_[KERNEL, HEAP];
         my $now = time;
         $server_data->{timeout}++;
-        $kernel->call('logger' => 'log' => "Handshake Error:  Client sent nothing within time allowed ($now)");
+        $kernel->call('logger' => 'log' => "SNAG::Server Handshake Error: Client sent nothing within time allowed ($now)");
         $kernel->yield('disconnect');
       },
 
@@ -298,12 +298,12 @@ sub new
           }
           else
           {
-            $kernel->call('logger' => 'log' => "Could not update heartbeats, 'object' not connected to the sysinfo database!");
+            $kernel->call('logger' => 'log' => "SNAG::Server Error: Could not update heartbeats, 'object' not connected to the sysinfo database!");
           }
         };
         if($@)
         {
-          $kernel->call('logger' => 'log' => "Error in heartbeat_update: $@");
+          $kernel->call('logger' => 'log' => "SNAG::Server Error: Error in heartbeat_update: $@");
         }
 
         my $remaining_hb = scalar keys %$heartbeat_spool > 0;
