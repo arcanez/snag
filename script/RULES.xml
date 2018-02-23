@@ -8,15 +8,15 @@
   <outerr type="ceiling" limit="5" alert="Interface is experiencing Output Errors" />
   <ifload type="ceiling" limit="242" alert="Interface is experiencing high load" />
   <reliab type="floor" limit="242" alert="Interface is experiencing poor reliability" />
-  <lavg5 type="range" low="10" high="25" alert="system is experiencing high load" />
-  <lavg5 type="ceiling" limit="25" alert="system is experiencing extremly high load" />
-  <lavg5 onlyhost='oraprod1' type="range" low="50" high="60" alert="system is experiencing high load" />
-  <lavg5 onlyhost='oraprod1' type="ceiling" limit="60" alert="system is experiencing extremly high load" />
-  <lavg5 onlyhost='enterprise1' type="range" low="100" high="200" alert="system is experiencing high load" />
-  <lavg5 onlyhost='enterprise1' type="ceiling" limit="200" alert="system is experiencing extremly high load" />
+  <lavg5 type="range" low="10" high="25" alert="System is experiencing high load" />
+  <lavg5 type="ceiling" limit="25" alert="System is experiencing extremely high load" />
+  <lavg5 onlyhost='oraprod1' type="range" low="50" high="60" alert="System is experiencing high load" />
+  <lavg5 onlyhost='oraprod1' type="ceiling" limit="60" alert="System is experiencing extremely high load" />
+  <lavg5 onlyhost='enterprise1' type="range" low="100" high="200" alert="System is experiencing high load" />
+  <lavg5 onlyhost='enterprise1' type="ceiling" limit="200" alert="System is experiencing extremely high load" />
   <net_list type="floor" limit="0"  alert="no listening ports" />
-  <uptime type="drop" alert="system seems to have re(booted)" />
-  <afs_rx_wth limit="50" type="ceiling" alert="AFS waiting threads extremly high" />
+  <uptime type="drop" alert="System seems to have re(booted)" />
+  <afs_rx_wth limit="50" type="ceiling" alert="AFS waiting threads extremely high" />
   <afs_rx_wth low="10" high="50" type="range" alert="AFS waiting threads high" />
   <ipLeased300 type="ceiling" limit="99" alert="DHCP multinet usage over 99%" />
   <dhcp_clientnf onlyhost="dhcp" type="ceiling" limit="100" alert="DHCP 'Client Not Found' unusually high" />
